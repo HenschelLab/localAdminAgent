@@ -158,6 +158,48 @@ A few things worth noticing:
   pipeline — extraction (PyMuPDF/python-docx/openpyxl) never leaves the local
   filesystem.
 
+A function by itself doesn't say *how often* it runs or *what* it's called with.
+Both come from `grade_submissions.py`: the loop over every submission in `main()`,
+and the actual call site inside `process_submission()`.
+
+```python
+# main(): the loop over every submission in the directory
+for i, sf in enumerate(submissions, 1):
+    print(f"[{i}/{len(submissions)}] {sf.student_id} — {sf.path.name}")
+    result = process_submission(cfg, sf, output_dir,
+                                 args.model, args.url, args.force)
+    results.append(result)
+
+write_summary_csv(cfg, results, output_dir)
+```
+
+```python
+# process_submission(): where call_ollama() actually gets invoked, once per submission
+user_prompt = build_user_prompt(sf, doc)
+try:
+    raw = gc.call_ollama(cfg.system_prompt, user_prompt, model=model, url=url)
+    result = gc.parse_model_json(raw)
+except Exception as e:
+    print(f"  [error] ollama call/parsing failed: {e}")
+    return None
+```
+
+A few things worth noticing here too:
+
+- **One call per submission.** `process_submission()` — and therefore
+  `call_ollama()` — runs exactly once per file in `submissions`, inside the `for`
+  loop in `main()`. There's no batching and no second pass; 150 submissions means
+  150 separate local LLM calls.
+- **`cfg.system_prompt` is the rubric.** `cfg` is whichever `AssignmentConfig` entry
+  matched `--assignment-type` (`report`, `logbook`, or `practice`) — same call site,
+  different rubric, depending on what you're grading.
+- **`model` and `url` are never hardcoded at the call site** — they're threaded all
+  the way through from the CLI (`--model`, `--url`), defaulting to `gemma4` and
+  `localhost` but overridable without touching this code.
+- **The `try`/`except` matters at scale.** One corrupt file or a slow/timed-out
+  Ollama response returns `None` for that submission and moves on to the next —
+  it doesn't abort the other 149.
+
 ## 6. Where the rubric lives
 
 Open `example_course_layout/FinalReports/CLAUDE.md`. This is the **layered-CLAUDE.md
