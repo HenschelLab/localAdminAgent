@@ -101,31 +101,11 @@ the output format from scratch.
 Stripped down to the shape that matters — one local LLM call per submission, nothing
 else leaving the machine:
 
-```
-for submission in find_submissions(directory, filename_pattern):
+![Pseudocode: grade submissions with a local LLM](docs/pseudocode.png)
 
-    if already_graded(submission) and not force:
-        continue                              # cache hit, skip the Ollama call entirely
-
-    text, word_count, page_count, image_count = extract(submission.path)   # local only
-
-    prompt = build_user_prompt(
-        facts={word_count, page_count, image_count},
-        text=text,                            # truncated locally if very long
-    )
-
-    reply = call_ollama(
-        system_prompt=RUBRIC_PROMPT,          # the rubric, restated for the model
-        user_prompt=prompt,
-        model="gemma4",
-        url="http://localhost:11434/api/chat",   # loopback only — the one network call
-    )
-
-    result = parse_json(reply)                # strips markdown fences if gemma4 adds them
-    save(submission, result)                  # one .json + one .txt, per student
-
-write_summary_csv(all_results)                # roll every result into one summary.csv
-```
+Typeset with LaTeX (`algorithm2e`); source at
+[`docs/pseudocode.tex`](docs/pseudocode.tex) if you want to edit or recompile it
+(`pdflatex pseudocode.tex`, then rasterize the PDF to update the PNG).
 
 The real version is `grade_submissions.py` + `grading_common.py` — this is just the
 shape of it, with the extraction/caching/error-handling details stripped out.

@@ -1,0 +1,40 @@
+% Pseudocode for the core per-submission grading loop (README.md).
+% Compile with: pdflatex pseudocode.tex
+\documentclass[border=14pt]{standalone}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{times}
+
+\SetKwFunction{FFind}{find\_submissions}
+\SetKwFunction{FGraded}{already\_graded}
+\SetKwFunction{FExtract}{extract}
+\SetKwFunction{FPrompt}{build\_user\_prompt}
+\SetKwFunction{FOllama}{call\_ollama}
+\SetKwFunction{FParse}{parse\_json}
+\SetKwFunction{FSave}{save}
+\SetKwFunction{FCsv}{write\_summary\_csv}
+
+\SetKwInOut{Input}{Input}
+\SetKwInOut{Output}{Output}
+
+\begin{document}
+\begin{algorithm}[H]
+\caption{Grade submissions with a local LLM}
+\Input{directory, filename\_pattern, rubric\_prompt, model, force}
+\Output{one JSON + one TXT per submission, plus summary.csv}
+
+$results \leftarrow \emptyset$\;
+\ForEach{$submission \in$ \FFind{directory, filename\_pattern}}{
+  \If{\FGraded{submission}\textup{ \textbf{and not} }force}{
+    \textbf{continue} \tcp*{cache hit --- no Ollama call made}
+  }
+  $(text,\ wc,\ pc,\ ic) \leftarrow$ \FExtract{submission.path}\tcp*{local only: PyMuPDF / python-docx / openpyxl}
+  $prompt \leftarrow$ \FPrompt{facts $= (wc, pc, ic)$, text $=$ text}\;
+  $reply \leftarrow$ \FOllama{system $=$ rubric\_prompt, user $=$ prompt, model $=$ model,\newline
+  \hspace*{4.2em} url $=$ \texttt{http://localhost:11434/api/chat}}\tcp*{the one network call, loopback only}
+  $result \leftarrow$ \FParse{reply}\;
+  \FSave{submission, result}\;
+  $results \leftarrow results \cup \{result\}$\;
+}
+\FCsv{results}\;
+\end{algorithm}
+\end{document}

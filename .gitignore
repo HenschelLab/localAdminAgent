@@ -6,4 +6,5 @@ grading_results/
 fake_blackboard_export_with_AI_grades.csv
 .DS_Store
 *.log
+*.aux
 ~$*
