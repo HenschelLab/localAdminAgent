@@ -110,6 +110,54 @@ Typeset with LaTeX (`algorithm2e`); source at
 The real version is `grade_submissions.py` + `grading_common.py` — this is just the
 shape of it, with the extraction/caching/error-handling details stripped out.
 
+### Code Spotlight: Calling Ollama Locally
+
+The one function in the whole pipeline that talks to the network at all —
+`call_ollama()` in `grading_common.py`:
+
+```python
+def call_ollama(
+    system_prompt: str,
+    user_prompt: str,
+    model: str = DEFAULT_MODEL,
+    url: str = OLLAMA_URL,
+    num_ctx: int = 32768,
+    temperature: float = 0.2,
+    timeout: int = REQUEST_TIMEOUT,
+) -> str:
+    payload = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+        "format": "json",
+        "stream": False,
+        "options": {
+            "num_ctx": num_ctx,
+            "temperature": temperature,
+        },
+    }
+    resp = requests.post(url, json=payload, timeout=timeout)
+    resp.raise_for_status()
+    data = resp.json()
+    return data["message"]["content"]
+```
+
+A few things worth noticing:
+
+- **`url` defaults to `OLLAMA_URL`** — `http://localhost:11434/api/chat`. That's
+  Ollama's own local server, not a cloud endpoint; traffic to `localhost` never
+  reaches a network card, router, or ISP.
+- **`format: "json"`** forces a structured, parseable reply instead of free text —
+  `parse_model_json()` still has to strip markdown fences gemma4 sometimes adds
+  anyway, but the shape is reliable.
+- **`temperature=0.2`** — low on purpose, since this is rubric grading, not creative
+  writing; consistency across 150+ submissions matters more than variety.
+- This `requests.post()` call is the *only* network call anywhere in the grading
+  pipeline — extraction (PyMuPDF/python-docx/openpyxl) never leaves the local
+  filesystem.
+
 ## 6. Where the rubric lives
 
 Open `example_course_layout/FinalReports/CLAUDE.md`. This is the **layered-CLAUDE.md
