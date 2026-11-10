@@ -134,6 +134,29 @@ Takes the scores from Exercise 1 and merges them into a synthetic gradebook expo
 including a deliberate demonstration of the "never overwrite an existing grade"
 safeguard. ~15 minutes.
 
+## Human judgment, kept in the loop
+
+This pipeline is deliberately **not** a fully automated grader. The model's job is to
+extract evidence and propose a score; several points in the pipeline exist specifically
+to stop and hand the actual decision to a person instead of guessing:
+
+- A gradebook cell is only auto-filled when it's blank or `"Needs Grading"`. Anything
+  else — a grade already entered, a manual override — is left completely untouched;
+  the AI's own score is still recorded, but only as an advisory note for a human to
+  weigh, never as a silent replacement.
+- A student with more than one graded file for the same assignment is flagged as
+  **ambiguous** rather than having one file picked for them automatically.
+- A 0-word extraction is flagged as "likely an unreadable scanned PDF," not scored as
+  an empty submission — only a human opening the actual file can tell the difference,
+  so the pipeline doesn't pretend to.
+- `--extra-review-json` exists so an instructor can attach a known-bad-match note
+  (e.g. the wrong document type entirely) to the output as a flag for review, rather
+  than the script silently deciding what to do about it.
+
+Where a case is routine, the pipeline moves fast. Where it's ambiguous, risky, or
+simply outside what the rubric can settle on its own, it's built to say so and stop —
+Exercise 2 walks through watching that safeguard fire on purpose.
+
 ## Confidentiality, by construction
 
 A real deployment of this pipeline never sends submission content anywhere but

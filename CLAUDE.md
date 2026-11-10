@@ -29,3 +29,8 @@ a production grading system — everything under `Workshop_Exercise/` is synthet
 - `example_course_layout/FinalReports/CLAUDE.md` is a paraphrased, original rubric
   description written for this tutorial. Don't replace it with verbatim text from any
   institution's internal handbook.
+- Preserve the human-in-the-loop judgment calls already built into the pipeline —
+  never auto-overwrite an existing grade, flag (don't silently resolve) ambiguous
+  multi-file matches, and flag a 0-word extraction instead of scoring it as empty. If
+  you're adding a new edge case, default to flagging it for a human rather than having
+  the code decide. See "Human judgment, kept in the loop" in `README.md`.
