@@ -1,0 +1,60 @@
+{
+  "cover_page": {
+    "present": false,
+    "comment": "No cover page content was extracted. The submission appears blank."
+  },
+  "abstract": {
+    "present": false,
+    "comment": "No abstract page was provided."
+  },
+  "table_of_contents": {
+    "present": false,
+    "comment": "No table of contents was included."
+  },
+  "introduction": {
+    "present": false,
+    "comment": "The introduction section is missing entirely."
+  },
+  "organization_brief_section": {
+    "present": false,
+    "includes_department_interrelation_diagram": false,
+    "comment": "The required section describing the host organization and its departmental interrelations is absent."
+  },
+  "diagrams_appropriate_use": {
+    "present": false,
+    "estimated_diagram_count": 0,
+    "comment": "No diagrams or figures were included in the submission."
+  },
+  "sections_and_subsections": {
+    "well_structured": false,
+    "comment": "Due to the complete absence of content, the report cannot be assessed for structure or subsection clarity."
+  },
+  "page_numbers": {
+    "present": false,
+    "comment": "No page numbering evidence was found."
+  },
+  "appendices": {
+    "present": false,
+    "comment": "The appendices section is missing."
+  },
+  "summary_section": {
+    "present": false,
+    "comment": "The required summary section is not present."
+  },
+  "conclusion": {
+    "present": false,
+    "clearly_indicates_internship_success": false,
+    "comment": "The conclusion is missing, making it impossible to assess whether the internship success was clearly indicated."
+  },
+  "word_count_comment": "The word count is 0, which is drastically far from the target of approximately 1,500 words. The report appears entirely blank.",
+  "overall_score_out_of_100": 0,
+  "overall_comments": "This submission is entirely blank, containing zero words of content. To receive a passing grade, the student must submit a complete draft that adheres to all structural requirements. Please ensure the report includes a cover page, abstract, table of contents, and all required sections (Introduction, Organization Brief, Summary, Conclusion). Focus on developing substantial content for each section, aiming for the 1,500-word target, and remember to integrate diagrams to illustrate processes and relationships.",
+  "_meta": {
+    "student_id": "100000004",
+    "filename": "Practice Report_100000004_attempt_2026-10-01-09-15-00_Internship Report Scan.docx",
+    "word_count": 0,
+    "page_count": null,
+    "embedded_image_count": 0,
+    "model": "gemma4"
+  }
+}

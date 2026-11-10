@@ -1,0 +1,34 @@
+Practice: Practice Report_100000001_attempt_2026-10-01-09-00-00_Internship Report NovaGrid.docx
+Student ID: 100000001
+Word count: 300 | Embedded images: 0
+
+OVERALL SCORE: 65/100
+
+Overall comments:
+  The report demonstrates a good understanding of the required structure, successfully including an abstract, clear conclusion, and basic sectioning. However, the submission is severely limited by its extremely low word count and lack of depth, failing to meet the academic rigor expected. Crucially, the report is missing visible diagrams, page numbers, and a dedicated summary section. To improve, the student must significantly expand the 'Work Carried Out' section with detailed technical descriptions, and ensure all referenced figures and diagrams are physically included and properly labeled.
+
+Word count assessment: The word count (300 words) is significantly below the target of 1,500 words, indicating a major lack of depth and required content expansion.
+
+Rubric breakdown:
+  - cover_page: [present=True]
+      A functional cover page is present, listing the report title, student name, and ID.
+  - abstract: [present=True]
+      A dedicated abstract page is included, providing a concise summary of the internship.
+  - table_of_contents: [present=True]
+      A table of contents is present and lists the main sections of the report.
+  - introduction: [present=True]
+      The introduction is present and sets the scope by describing the duration and focus of the internship.
+  - organization_brief_section: [present=True, includes_department_interrelation_diagram=False]
+      The 'Organization Overview' section is present and describes the three departments and their coordination. However, while it references 'Figure 1' for the data flow diagram, the diagram itself is not visible in the extracted text.
+  - diagrams_appropriate_use: [present=False, estimated_diagram_count=0]
+      Diagrams are referenced (Figure 1, organization chart in Appendix B), but zero embedded images or visible figures are present in the extracted text, limiting the visual evidence.
+  - sections_and_subsections: [well_structured=False]
+      The report uses clear main headings (e.g., 'Work Carried Out'), but the structure is very shallow and lacks the necessary depth and detailed subsections required for a comprehensive academic report.
+  - page_numbers: [present=False]
+      No evidence of page numbering is visible in the extracted text.
+  - appendices: [present=True]
+      The appendices are referenced and mentioned in the final section, listing Appendix A and Appendix B.
+  - summary_section: [present=False]
+      A dedicated 'Summary' section is missing. The content that might serve this purpose is instead merged into the 'Conclusion' section.
+  - conclusion: [present=True, clearly_indicates_internship_success=True]
+      The conclusion is present and explicitly states that the internship was successful, providing concrete evidence (the dashboard) to support this claim.

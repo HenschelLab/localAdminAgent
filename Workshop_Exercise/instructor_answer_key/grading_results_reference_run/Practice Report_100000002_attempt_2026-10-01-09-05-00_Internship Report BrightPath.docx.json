@@ -1,0 +1,60 @@
+{
+  "cover_page": {
+    "present": true,
+    "comment": "A basic title and student identification are present, fulfilling the minimum requirement for a cover page."
+  },
+  "abstract": {
+    "present": false,
+    "comment": "A dedicated abstract page summarizing the report's scope and findings is missing."
+  },
+  "table_of_contents": {
+    "present": false,
+    "comment": "A table of contents is not included in the submission."
+  },
+  "introduction": {
+    "present": true,
+    "comment": "An introduction is present, though it is extremely brief and lacks academic depth."
+  },
+  "organization_brief_section": {
+    "present": false,
+    "includes_department_interrelation_diagram": false,
+    "comment": "The required section detailing the host organization's structure and department interrelations is missing. The section titled 'What I Did' describes tasks, not organizational structure."
+  },
+  "diagrams_appropriate_use": {
+    "present": false,
+    "estimated_diagram_count": 0,
+    "comment": "No diagrams or figures are included. The objective facts confirm zero embedded images, and the report lacks any visual aids to explain processes or structure."
+  },
+  "sections_and_subsections": {
+    "well_structured": false,
+    "comment": "The report is poorly structured, jumping directly from the Introduction to a task description ('What I Did') and then to the Conclusion, skipping required sections like the Organizational Brief and Summary."
+  },
+  "page_numbers": {
+    "present": false,
+    "comment": "There is no evidence of page numbering throughout the document."
+  },
+  "appendices": {
+    "present": false,
+    "comment": "No appendices are included to support the findings or include supplementary materials."
+  },
+  "summary_section": {
+    "present": false,
+    "comment": "A dedicated summary section is missing, which should synthesize the key findings before the conclusion."
+  },
+  "conclusion": {
+    "present": true,
+    "clearly_indicates_internship_success": false,
+    "comment": "The conclusion is vague ('I learned some things about logistics') and fails to provide a clear, measurable statement that definitively proves the internship was successful or achieved its goals."
+  },
+  "word_count_comment": "The word count (68 words) is drastically too low. The report requires significant expansion to approach the target of 1,500 words.",
+  "overall_score_out_of_100": 20,
+  "overall_comments": "This report is structurally incomplete and critically underdeveloped. While the basic components (Title, Intro, Conclusion) are present, the submission is missing nearly every required academic element, including the Abstract, Table of Contents, Summary, Appendices, and the crucial Organizational Brief. The content is extremely brief, failing to meet the required word count or provide the necessary depth of analysis. To improve, you must first adhere strictly to the required structure, dedicating substantial sections to describing the organization's function and processes using diagrams, and expanding your analysis of your tasks into detailed, academic sections.",
+  "_meta": {
+    "student_id": "100000002",
+    "filename": "Practice Report_100000002_attempt_2026-10-01-09-05-00_Internship Report BrightPath.docx",
+    "word_count": 68,
+    "page_count": null,
+    "embedded_image_count": 0,
+    "model": "gemma4"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "cover_page": {
+    "present": true,
+    "comment": "A title is present ('My Internship at Dune Analytics') but it is formatted as a presentation title slide, not a formal academic report cover page."
+  },
+  "abstract": {
+    "present": false,
+    "comment": "No dedicated abstract page or section is included. The submission jumps directly into the agenda/overview."
+  },
+  "table_of_contents": {
+    "present": false,
+    "comment": "A formal table of contents is missing. The 'Agenda' slide serves as a functional outline but is not a structured TOC."
+  },
+  "introduction": {
+    "present": true,
+    "comment": "The 'Agenda' and initial slides provide a basic introduction to the scope ('Who they are, what I did, what I learned'), but it lacks the depth and formal structure expected in a written report."
+  },
+  "organization_brief_section": {
+    "present": true,
+    "includes_department_interrelation_diagram": false,
+    "comment": "A brief overview of the company is provided ('founded 2015, ~40 employees, data consulting'), but it is extremely minimal. Crucially, no diagram illustrating department inter-relation is included."
+  },
+  "diagrams_appropriate_use": {
+    "present": false,
+    "estimated_diagram_count": 0,
+    "comment": "No diagrams or figures are present in the extracted text. The objective facts confirm zero embedded images."
+  },
+  "sections_and_subsections": {
+    "well_structured": false,
+    "comment": "The report is structured using presentation slide notes (Slide 1, Slide 2, etc.), which is not suitable for a formal academic report format requiring clear, numbered sections and subsections."
+  },
+  "page_numbers": {
+    "present": false,
+    "comment": "No page numbering is visible in the extracted text."
+  },
+  "appendices": {
+    "present": false,
+    "comment": "No appendices are included."
+  },
+  "summary_section": {
+    "present": false,
+    "comment": "While 'Takeaways' (Slide 6) function as a summary of learning, they are not presented as a formal, dedicated 'Summary' section."
+  },
+  "conclusion": {
+    "present": false,
+    "clearly_indicates_internship_success": false,
+    "comment": "The submission ends with a conversational closing ('Thank you \u2014 questions?'), which is not a formal conclusion. It fails to synthesize the experience to definitively state whether the internship was successful."
+  },
+  "word_count_comment": "The word count is only 80 words, which is drastically short. The report must be expanded significantly to approach the required 1,500-word length.",
+  "overall_score_out_of_100": 20,
+  "overall_comments": "The submission is fundamentally flawed because it is presented as a set of presentation speaker notes rather than a formal academic report. The content is extremely brief, only reaching 80 words, and fails to meet the required length or structural depth. To improve, the student must convert these bullet points into fully developed, detailed prose, ensuring every section (Abstract, TOC, Introduction, etc.) is formally written out. Furthermore, the student must incorporate multiple diagrams and expand the analysis of the company's departmental structure and the specific technical challenges faced during the internship.",
+  "_meta": {
+    "student_id": "100000003",
+    "filename": "Practice Report_100000003_attempt_2026-10-01-09-10-00_Internship Slides Dune Analytics.docx",
+    "word_count": 80,
+    "page_count": null,
+    "embedded_image_count": 0,
+    "model": "gemma4"
+  }
+}
