@@ -224,6 +224,42 @@ Takes the scores from Exercise 1 and merges them into a synthetic gradebook expo
 including a deliberate demonstration of the "never overwrite an existing grade"
 safeguard. ~15 minutes.
 
+## 9. Bonus: run the local MCP demo
+
+[`mcp_demo/`](mcp_demo/) is a separate, small demo of the Model Context Protocol. A Python
+host asks gemma4 which MCP tool to call, validates each call, and answers from the results.
+It uses the Ollama setup from steps 1–3 above.
+
+**Requirements**
+
+- Python 3.11 or newer.
+- Ollama running, with `gemma4` pulled (steps 1–3).
+- Python packages listed in [`mcp_demo/requirements.txt`](mcp_demo/requirements.txt):
+  `mcp>=2.2,<3`, `ollama==0.6.2`, `jsonschema==4.26.0`.
+
+**Install and run** (from the repo root)
+
+```bash
+cd mcp_demo
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python host.py
+```
+
+On Windows, use `.venv\Scripts\python` in place of `.venv/bin/python`.
+
+At the `Question:` prompt, type one question, for example `What do three notebooks cost?`.
+The trace shows each model decision and each MCP tool call. The server creates
+`catalog.sqlite3` on first run; it is git-ignored.
+
+**Tests** (no Ollama needed):
+
+```bash
+.venv/bin/python -m unittest -v test_demo
+```
+
+[`mcp_demo/README.md`](mcp_demo/README.md) explains the workflow stages, the tools, and the code.
+
 ## Human judgment, kept in the loop
 
 This pipeline is deliberately **not** a fully automated grader. The model's job is to
