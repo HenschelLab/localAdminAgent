@@ -17,6 +17,57 @@ of it — ever leaves your computer over the network.
 - macOS, Linux, or Windows
 - ~8 GB of free RAM (local LLM inference needs headroom)
 
+## Optional: set up Claude Code
+
+Claude Code is the agent that runs the Skills in this repo. It is separate from the local
+model: Claude Code talks to Anthropic's API, while the grading itself runs on Ollama.
+
+1. **Install** (macOS, Linux, or WSL):
+
+   ```bash
+   curl -fsSL https://claude.ai/install.sh | bash
+   ```
+
+   Windows (PowerShell):
+
+   ```powershell
+   irm https://claude.ai/install.ps1 | iex
+   ```
+
+   Alternatively, with Node.js 18+: `npm install -g @anthropic-ai/claude-code`.
+   Check with `claude --version`.
+
+2. **Set your API key.** The key was sent to you by email. Do not paste it into any file
+   in this repo — the repo is public.
+
+   macOS / Linux — add this line to `~/.zshrc` or `~/.bashrc`, then open a new terminal:
+
+   ```bash
+   export ANTHROPIC_API_KEY="your-key-here"
+   ```
+
+   Windows (PowerShell) — run once, then open a new terminal:
+
+   ```powershell
+   setx ANTHROPIC_API_KEY "your-key-here"
+   ```
+
+3. **Start it** from inside the repo, so Claude Code picks up the project's `CLAUDE.md`
+   and Skills:
+
+   ```bash
+   cd localAdminAgent
+   claude
+   ```
+
+   Type `/help` for commands. Use `/plan` to have Claude propose changes before it makes
+   them.
+
+**Confidentiality note:** the local-model pipeline never sends submission content off
+your machine. A Claude Code session is different — the prompts and files it reads in that
+session are sent to Anthropic. Keep real student data out of Claude Code sessions unless
+your institution's policy allows it.
+
 ## 1. Install Ollama
 
 **macOS** — download the installer from [ollama.com](https://ollama.com), or:
