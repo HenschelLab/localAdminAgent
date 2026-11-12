@@ -103,9 +103,6 @@ else leaving the machine:
 
 ![Pseudocode: grade submissions with a local LLM](docs/pseudocode.png)
 
-Typeset with LaTeX (`algorithm2e`); source at
-[`docs/pseudocode.tex`](docs/pseudocode.tex) if you want to edit or recompile it
-(`pdflatex pseudocode.tex`, then rasterize the PDF to update the PNG).
 
 The real version is `grade_submissions.py` + `grading_common.py` — this is just the
 shape of it, with the extraction/caching/error-handling details stripped out.
