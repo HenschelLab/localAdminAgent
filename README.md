@@ -1,4 +1,4 @@
-# localAdminAgent
+# Local Admin Agent
 
 A hands-on tutorial in confidentiality-preserving document grading: a local LLM
 (Ollama + gemma4) scores internship-style reports against a rubric, packaged as three
